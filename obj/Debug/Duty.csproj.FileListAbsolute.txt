@@ -1,0 +1,4 @@
+C:\Users\Andrew\Documents\GitHub\Duty\obj\Debug\Duty.csprojResolveAssemblyReference.cache
+C:\Users\Andrew\Desktop\Unturned\Servers\test\Rocket\Plugins\Votifier.dll
+C:\Users\Andrew\Documents\GitHub\Duty\obj\Debug\Duty.dll
+C:\Users\Andrew\Documents\GitHub\Duty\Duty.dll
