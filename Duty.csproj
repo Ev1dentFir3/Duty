@@ -68,6 +68,7 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Duty.cs" />
     <Compile Include="CommandDuty.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
