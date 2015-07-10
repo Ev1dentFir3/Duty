@@ -13,16 +13,8 @@ namespace EFG
     {
         public void Execute(RocketPlayer caller, string[] command)
         {
-                if (caller.IsAdmin){
-                caller.Admin(false);
-                caller.Features.GodMode = false;
-                caller.Features.VanishMode = false;
-                RocketChat.Say(caller.CharacterName + " is now off duty");
-            }
-            else{
-                caller.Admin(true);
-                RocketChat.Say(caller.CharacterName + " is now on duty");
-            }
+            Duty.Instance.duty(caller);
+            
         }
 
         public string Help
