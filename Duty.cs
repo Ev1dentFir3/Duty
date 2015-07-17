@@ -9,7 +9,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 
-namespace EFG
+namespace EFG.Duty
 {
     public class Duty : RocketPlugin<DutyConfiguration>
     {
