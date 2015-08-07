@@ -11,10 +11,12 @@ namespace EFG.Duty
 {
     public class CommandDuty : IRocketCommand
     {
-        public void Execute(RocketPlayer caller, string[] command)
+        public void Execute(IRocketPlayer caller, string[] command)
         {
-            Duty.Instance.duty(caller);
-            
+            if (caller == null) return;
+            UnturnedPlayer player = (UnturnedPlayer)caller;
+            Duty.Instance.duty(player);
+
         }
 
         public string Help
@@ -32,13 +34,20 @@ namespace EFG.Duty
             get { return ""; }
         }
 
-        public bool RunFromConsole
+        public bool AllowFromConsole
         {
             get { return false; }
         }
 
         public List<string> Aliases {
             get { return new List<string>() { "d" }; }
+        }
+        public List<string> Permissions
+        {
+            get
+            {
+                return new List<string>();
+            }
         }
     }
 }

@@ -37,22 +37,24 @@
   <ItemGroup>
     <Reference Include="Assembly-CSharp, Version=0.0.0.0, Culture=neutral, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
-      <HintPath>lib\Assembly-CSharp.dll</HintPath>
+      <HintPath>D:\Github\Rocket\Assembly-CSharp.dll</HintPath>
       <Private>False</Private>
     </Reference>
     <Reference Include="Assembly-CSharp-firstpass, Version=0.0.0.0, Culture=neutral, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
-      <HintPath>lib\Assembly-CSharp-firstpass.dll</HintPath>
-      <Private>False</Private>
+      <HintPath>D:\Github\Rocket\Assembly-CSharp-firstpass.dll</HintPath>
     </Reference>
     <Reference Include="Rocket.API, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
-      <HintPath>lib\Rocket.API.dll</HintPath>
+      <HintPath>D:\Github\Rocket\Rocket.API.dll</HintPath>
       <Private>False</Private>
+    </Reference>
+    <Reference Include="Rocket.Core">
+      <HintPath>D:\Github\Rocket\Rocket.Core.dll</HintPath>
     </Reference>
     <Reference Include="Rocket.Unturned, Version=4.0.0.0, Culture=neutral, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
-      <HintPath>lib\Rocket.Unturned.dll</HintPath>
+      <HintPath>D:\Github\Rocket\Rocket.Unturned.dll</HintPath>
       <Private>False</Private>
     </Reference>
     <Reference Include="System" />
@@ -74,10 +76,6 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="lib\Assembly-CSharp-firstpass.dll" />
-    <Content Include="lib\Assembly-CSharp.dll" />
-    <Content Include="lib\Rocket.API.dll" />
-    <Content Include="lib\Rocket.Unturned.dll" />
     <Content Include="lib\UnityEngine.dll" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

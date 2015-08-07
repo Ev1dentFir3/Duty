@@ -12,16 +12,11 @@ namespace EFG.Duty
         public bool RemoveAdminOnLogout;
         public string MessageColor;
 
-        public IRocketPluginConfiguration DefaultConfiguration
+        public void LoadDefaults()
         {
-            get
-            {
-                return new DutyConfiguration{
-                    EnableServerAnnouncer = true,
-                    RemoveAdminOnLogout = true,
-                    MessageColor = "red"
-                };
-            }
+            EnableServerAnnouncer = true;
+            RemoveAdminOnLogout = true;
+            MessageColor = "red";
         }
     }
 }

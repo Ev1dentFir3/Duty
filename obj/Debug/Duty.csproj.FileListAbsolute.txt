@@ -2,3 +2,5 @@ C:\Users\Andrew\Documents\GitHub\Duty\obj\Debug\Duty.csprojResolveAssemblyRefere
 C:\Users\Andrew\Desktop\Unturned\Servers\test\Rocket\Plugins\Votifier.dll
 C:\Users\Andrew\Documents\GitHub\Duty\obj\Debug\Duty.dll
 C:\Users\Andrew\Documents\GitHub\Duty\Duty.dll
+C:\Users\Andrew\Documents\GitHub\Duty\Assembly-CSharp-firstpass.dll
+C:\Users\Andrew\Documents\GitHub\Duty\Rocket.Core.dll
