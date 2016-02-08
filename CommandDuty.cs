@@ -39,14 +39,19 @@ namespace EFG.Duty
             get { return false; }
         }
 
+        public AllowedCaller AllowedCaller
+        {
+            get { return Rocket.API.AllowedCaller.Player; }
+        }
         public List<string> Aliases {
             get { return new List<string>() { "d" }; }
         }
+
         public List<string> Permissions
         {
             get
             {
-                return new List<string>();
+                return new List<string>() { "duty.duty"};
             }
         }
     }

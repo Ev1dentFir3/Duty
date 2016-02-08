@@ -35,27 +35,22 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="Assembly-CSharp, Version=0.0.0.0, Culture=neutral, processorArchitecture=MSIL">
-      <SpecificVersion>False</SpecificVersion>
-      <HintPath>D:\Github\Rocket\Assembly-CSharp.dll</HintPath>
-      <Private>False</Private>
+    <Reference Include="Assembly-CSharp">
+      <HintPath>E:\Downloads\Kits-master\Kits-master\lib\Assembly-CSharp.dll</HintPath>
     </Reference>
     <Reference Include="Assembly-CSharp-firstpass, Version=0.0.0.0, Culture=neutral, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
-      <HintPath>D:\Github\Rocket\Assembly-CSharp-firstpass.dll</HintPath>
+      <HintPath>E:\Downloads\Kits-master\Kits-master\lib\Assembly-CSharp-firstpass.dll</HintPath>
     </Reference>
-    <Reference Include="Rocket.API, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+    <Reference Include="Rocket.API">
+      <HintPath>E:\Downloads\Kits-master\Kits-master\lib\Rocket.API.dll</HintPath>
+    </Reference>
+    <Reference Include="Rocket.Core, Version=2.0.1.0, Culture=neutral, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
-      <HintPath>D:\Github\Rocket\Rocket.API.dll</HintPath>
-      <Private>False</Private>
+      <HintPath>E:\Downloads\Kits-master\Kits-master\lib\Rocket.Core.dll</HintPath>
     </Reference>
-    <Reference Include="Rocket.Core">
-      <HintPath>D:\Github\Rocket\Rocket.Core.dll</HintPath>
-    </Reference>
-    <Reference Include="Rocket.Unturned, Version=4.0.0.0, Culture=neutral, processorArchitecture=MSIL">
-      <SpecificVersion>False</SpecificVersion>
-      <HintPath>D:\Github\Rocket\Rocket.Unturned.dll</HintPath>
-      <Private>False</Private>
+    <Reference Include="Rocket.Unturned">
+      <HintPath>E:\Downloads\Kits-master\Kits-master\lib\Rocket.Unturned.dll</HintPath>
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />
@@ -65,8 +60,7 @@
     <Reference Include="System.Xml" />
     <Reference Include="UnityEngine, Version=0.0.0.0, Culture=neutral, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
-      <HintPath>lib\UnityEngine.dll</HintPath>
-      <Private>False</Private>
+      <HintPath>E:\Downloads\Kits-master\Kits-master\lib\UnityEngine.dll</HintPath>
     </Reference>
   </ItemGroup>
   <ItemGroup>

@@ -4,3 +4,7 @@ C:\Users\Andrew\Documents\GitHub\Duty\obj\Debug\Duty.dll
 C:\Users\Andrew\Documents\GitHub\Duty\Duty.dll
 C:\Users\Andrew\Documents\GitHub\Duty\Assembly-CSharp-firstpass.dll
 C:\Users\Andrew\Documents\GitHub\Duty\Rocket.Core.dll
+C:\Users\Andrew\Documents\GitHub\Duty\Assembly-CSharp.dll
+C:\Users\Andrew\Documents\GitHub\Duty\Rocket.API.dll
+C:\Users\Andrew\Documents\GitHub\Duty\Rocket.Unturned.dll
+C:\Users\Andrew\Documents\GitHub\Duty\UnityEngine.dll
