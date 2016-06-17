@@ -26,6 +26,7 @@ namespace EFG.Duty
         }
         public void duty(UnturnedPlayer caller)
         {
+            
             if (caller.IsAdmin)
             {
                 caller.Admin(false);
@@ -41,15 +42,32 @@ namespace EFG.Duty
             }
         }
 
+        public void cduty(UnturnedPlayer cplayer, UnturnedPlayer caller)
+        {
+            UnturnedChat.Say("Duty Debug: Checking Duty", UnturnedChat.GetColorFromName(Duty.Instance.Configuration.Instance.MessageColor, Color.red));
+            if (cplayer.IsAdmin)
+            {
+                UnturnedChat.Say("Duty Debug: Cplayer Admin Found", UnturnedChat.GetColorFromName(Duty.Instance.Configuration.Instance.MessageColor, Color.red));
+                if (Configuration.Instance.AllowDutyCheck) UnturnedChat.Say(Duty.Instance.Translate("check_on_duty_message", cplayer, caller), UnturnedChat.GetColorFromName(Duty.Instance.Configuration.Instance.MessageColor, Color.red));
+            }
+            else
+            {
+                UnturnedChat.Say("Duty Debug: Cplayer Admin Not Found", UnturnedChat.GetColorFromName(Duty.Instance.Configuration.Instance.MessageColor, Color.red));
+                if (Configuration.Instance.AllowDutyCheck) UnturnedChat.Say(Duty.Instance.Translate("check_off_duty_message", cplayer, caller), UnturnedChat.GetColorFromName(Duty.Instance.Configuration.Instance.MessageColor, Color.red));
+            }
+        }
+
         public override TranslationList DefaultTranslations
         {
             get
             {
                 return new TranslationList {
-                    {"admin_login_message", "{0} is now on duty"},
-                    {"admin_logoff_message", "{0} is now off duty"},
+                    {"admin_login_message", "{0} has logged on and is now on duty"},
+                    {"admin_logoff_message", "{0} has logged off is now off duty"},
                     {"on_duty_message", "{0} is now on duty"},
                     {"off_duty_message", "{0} is now off duty"},
+                    {"check_on_duty_message", "{0} has confirmed that {1} is on duty"},
+                    {"check_off_duty_message", "{0} has confirmed that {1} is not on duty"},
                 };
                     
             }

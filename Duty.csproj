@@ -35,22 +35,25 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="Assembly-CSharp">
-      <HintPath>E:\Downloads\Kits-master\Kits-master\lib\Assembly-CSharp.dll</HintPath>
+    <Reference Include="Assembly-CSharp, Version=0.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>I:\Rocket.Unturned_930\Assembly-CSharp.dll</HintPath>
     </Reference>
     <Reference Include="Assembly-CSharp-firstpass, Version=0.0.0.0, Culture=neutral, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
-      <HintPath>E:\Downloads\Kits-master\Kits-master\lib\Assembly-CSharp-firstpass.dll</HintPath>
+      <HintPath>D:\Steam\steamapps\common\Unturned\Unturned_Data\Managed\Assembly-CSharp-firstpass.dll</HintPath>
     </Reference>
-    <Reference Include="Rocket.API">
-      <HintPath>E:\Downloads\Kits-master\Kits-master\lib\Rocket.API.dll</HintPath>
-    </Reference>
-    <Reference Include="Rocket.Core, Version=2.0.1.0, Culture=neutral, processorArchitecture=MSIL">
+    <Reference Include="Rocket.API, Version=2.1.0.0, Culture=neutral, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
-      <HintPath>E:\Downloads\Kits-master\Kits-master\lib\Rocket.Core.dll</HintPath>
+      <HintPath>I:\Rocket.Unturned_930\Rocket.API.dll</HintPath>
     </Reference>
-    <Reference Include="Rocket.Unturned">
-      <HintPath>E:\Downloads\Kits-master\Kits-master\lib\Rocket.Unturned.dll</HintPath>
+    <Reference Include="Rocket.Core, Version=2.0.3.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>I:\Rocket.Unturned_930\Rocket.Core.dll</HintPath>
+    </Reference>
+    <Reference Include="Rocket.Unturned, Version=4.7.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>I:\Rocket.Unturned_930\Rocket.Unturned.dll</HintPath>
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />
@@ -64,6 +67,7 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="CommandDutycheck.cs" />
     <Compile Include="DutyConfiguration.cs" />
     <Compile Include="Duty.cs" />
     <Compile Include="CommandDuty.cs" />

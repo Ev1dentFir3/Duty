@@ -8,3 +8,8 @@ C:\Users\Andrew\Documents\GitHub\Duty\Assembly-CSharp.dll
 C:\Users\Andrew\Documents\GitHub\Duty\Rocket.API.dll
 C:\Users\Andrew\Documents\GitHub\Duty\Rocket.Unturned.dll
 C:\Users\Andrew\Documents\GitHub\Duty\UnityEngine.dll
+C:\Users\Andrew\Documents\GitHub\Duty\Pathfinding.JsonFx.dll
+C:\Users\Andrew\Documents\GitHub\Duty\Pathfinding.Ionic.Zip.Reduced.dll
+C:\Users\Andrew\Documents\GitHub\Duty\Pathfinding.ClipperLib.dll
+C:\Users\Andrew\Documents\GitHub\Duty\Pathfinding.Poly2Tri.dll
+C:\Users\Andrew\Documents\GitHub\Duty\UnityEngine.CrashLog.dll
