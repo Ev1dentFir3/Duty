@@ -1,59 +1,120 @@
-﻿using Rocket.Unturned.Commands;
-using Rocket.Unturned.Player;
-using Rocket.Unturned.Plugins;
-using Rocket.Unturned.Events;
+﻿using Rocket.Unturned.Player;
 using Rocket.Unturned.Chat;
 using Rocket.Unturned;
 using Rocket.Core.Plugins;
 using Rocket.API.Collections;
-using SDG;
 using UnityEngine;
-using System;
-using System.Collections.Generic;
-using System.Linq;
+using Rocket.Core.Logging;
+using Rocket.API;
 
 namespace EFG.Duty
 {
     public class Duty : RocketPlugin<DutyConfiguration>
     {
-
         public static Duty Instance;
+
         protected override void Load()
         {
-            Duty.Instance = this;
+            Instance = this;
+
+            Logger.LogWarning("Loading event \"Player Connected\"...");
             U.Events.OnPlayerConnected += PlayerConnected;
+            Logger.LogWarning("Loading event \"Player Disconnected\"...");
             U.Events.OnPlayerDisconnected += PlayerDisconnected;
+
+            Logger.LogWarning("");
+            Logger.LogWarning("Duty has been successfully loaded!");
         }
+        
+        protected override void Unload()
+        {
+            Instance = null;
+
+            Logger.LogWarning("Unloading on player connect event...");
+            U.Events.OnPlayerConnected -= PlayerConnected;
+            Logger.LogWarning("Unloading on player disconnect event...");
+            U.Events.OnPlayerConnected -= PlayerDisconnected;
+
+            Logger.LogWarning("");
+            Logger.LogWarning("Duty has been unloaded!");
+        }
+
         public void duty(UnturnedPlayer caller)
         {
-            
             if (caller.IsAdmin)
             {
                 caller.Admin(false);
                 caller.Features.GodMode = false;
                 caller.Features.VanishMode = false;
-                if (Configuration.Instance.EnableServerAnnouncer) UnturnedChat.Say(Duty.Instance.Translate("off_duty_message", caller.CharacterName), UnturnedChat.GetColorFromName(Duty.Instance.Configuration.Instance.MessageColor, Color.red));
+                if (Configuration.Instance.EnableServerAnnouncer) UnturnedChat.Say(Instance.Translate("off_duty_message", caller.CharacterName), UnturnedChat.GetColorFromName(Instance.Configuration.Instance.MessageColor, Color.red));
             }
             else
             {
                 caller.Admin(true);
-                if (Configuration.Instance.EnableServerAnnouncer) UnturnedChat.Say(Duty.Instance.Translate("on_duty_message", caller.CharacterName), UnturnedChat.GetColorFromName(Duty.Instance.Configuration.Instance.MessageColor, Color.red));
+                if (Configuration.Instance.EnableServerAnnouncer) UnturnedChat.Say(Instance.Translate("on_duty_message", caller.CharacterName), UnturnedChat.GetColorFromName(Instance.Configuration.Instance.MessageColor, Color.red));
                 
             }
         }
 
-        public void cduty(UnturnedPlayer cplayer, UnturnedPlayer caller)
+        public void cduty(UnturnedPlayer cplayer, IRocketPlayer caller)
         {
-            UnturnedChat.Say("Duty Debug: Checking Duty", UnturnedChat.GetColorFromName(Duty.Instance.Configuration.Instance.MessageColor, Color.red));
-            if (cplayer.IsAdmin)
+            if (cplayer != null)
             {
-                UnturnedChat.Say("Duty Debug: Cplayer Admin Found", UnturnedChat.GetColorFromName(Duty.Instance.Configuration.Instance.MessageColor, Color.red));
-                if (Configuration.Instance.AllowDutyCheck) UnturnedChat.Say(Duty.Instance.Translate("check_on_duty_message", cplayer, caller), UnturnedChat.GetColorFromName(Duty.Instance.Configuration.Instance.MessageColor, Color.red));
+                if (cplayer.IsAdmin)
+                {
+                    Logger.LogWarning("Duty Debug: Checking Duty");
+                    if (Configuration.Instance.AllowDutyCheck)
+                    {
+                        Logger.LogWarning("Duty Debug: Cplayer Admin Found.");
+                        if (caller is ConsolePlayer)
+                        {
+                            UnturnedChat.Say(Instance.Translate("check_on_duty_message", cplayer, "Console"), UnturnedChat.GetColorFromName(Instance.Configuration.Instance.MessageColor, Color.red));
+                        }
+                        else if (caller is UnturnedPlayer)
+                        {
+                            UnturnedChat.Say(Instance.Translate("check_on_duty_message", cplayer, caller), UnturnedChat.GetColorFromName(Instance.Configuration.Instance.MessageColor, Color.red));
+                        }
+                    }
+                    else if (Configuration.Instance.AllowDutyCheck == false)
+                    {
+                        Logger.LogWarning("Duty Debug: Unable To Check Duty. Configuration Is Set To Be Disabled.");
+                        if (caller is UnturnedPlayer)
+                        {
+                            UnturnedChat.Say(caller, "Unable To Check Duty. Configuration Is Set To Be Disabled.");
+                        }
+                    }
+                }
+                else if (cplayer.IsAdmin == false)
+                {
+                    if (Configuration.Instance.AllowDutyCheck)
+                    {
+                        Logger.LogWarning("Duty Debug: Cplayer Admin Not Found");
+                        if (caller is ConsolePlayer)
+                        {
+                            UnturnedChat.Say(Instance.Translate("check_off_duty_message", cplayer, "Console"), UnturnedChat.GetColorFromName(Instance.Configuration.Instance.MessageColor, Color.red));
+                        }
+                        else if (caller is UnturnedPlayer)
+                        {
+                            UnturnedChat.Say(Instance.Translate("check_off_duty_message", cplayer, caller), UnturnedChat.GetColorFromName(Instance.Configuration.Instance.MessageColor, Color.red));
+                        }
+                    }
+                    else if (Configuration.Instance.AllowDutyCheck == false)
+                    {
+                        Logger.LogWarning("Duty Debug: Unable To Check Duty. Configuration Is Set To Be Disabled.");
+                        if (caller is UnturnedPlayer)
+                        {
+                            UnturnedChat.Say(caller, "Unable To Check Duty. Configuration Is Set To Be Disabled.");
+                        }
+                    }
+                }
             }
-            else
+            else if (cplayer == null)
             {
-                UnturnedChat.Say("Duty Debug: Cplayer Admin Not Found", UnturnedChat.GetColorFromName(Duty.Instance.Configuration.Instance.MessageColor, Color.red));
-                if (Configuration.Instance.AllowDutyCheck) UnturnedChat.Say(Duty.Instance.Translate("check_off_duty_message", cplayer, caller), UnturnedChat.GetColorFromName(Duty.Instance.Configuration.Instance.MessageColor, Color.red));
+                Logger.LogWarning("Duty Debug: Player is not online or his name is invalid.");
+                if (caller is UnturnedPlayer)
+                {
+                    UnturnedChat.Say(caller, "Player is not online or his name is invalid.");
+                }
             }
         }
 
@@ -62,12 +123,12 @@ namespace EFG.Duty
             get
             {
                 return new TranslationList {
-                    {"admin_login_message", "{0} has logged on and is now on duty"},
-                    {"admin_logoff_message", "{0} has logged off is now off duty"},
-                    {"on_duty_message", "{0} is now on duty"},
-                    {"off_duty_message", "{0} is now off duty"},
-                    {"check_on_duty_message", "{0} has confirmed that {1} is on duty"},
-                    {"check_off_duty_message", "{0} has confirmed that {1} is not on duty"},
+                    {"admin_login_message", "{0} has logged on and is now on duty."},
+                    {"admin_logoff_message", "{0} has logged off and is now off duty."},
+                    {"on_duty_message", "{0} is now on duty."},
+                    {"off_duty_message", "{0} is now off duty."},
+                    {"check_on_duty_message", "{0} has confirmed that {1} is on duty."},
+                    {"check_off_duty_message", "{0} has confirmed that {1} is not on duty."},
                 };
                     
             }
@@ -76,7 +137,7 @@ namespace EFG.Duty
         {
             if (player.IsAdmin)
             {
-                if (Configuration.Instance.EnableServerAnnouncer) UnturnedChat.Say(Duty.Instance.Translate("admin_login_message", player.CharacterName), UnturnedChat.GetColorFromName(Duty.Instance.Configuration.Instance.MessageColor, Color.red));
+                if (Configuration.Instance.EnableServerAnnouncer) UnturnedChat.Say(Instance.Translate("admin_login_message", player.CharacterName), UnturnedChat.GetColorFromName(Instance.Configuration.Instance.MessageColor, Color.red));
             }
         }
         void PlayerDisconnected(UnturnedPlayer player)
@@ -88,8 +149,10 @@ namespace EFG.Duty
                     player.Admin(false);
                     player.Features.GodMode = false;
                     player.Features.VanishMode = false;
-                    if (Configuration.Instance.EnableServerAnnouncer) UnturnedChat.Say(Duty.Instance.Translate("admin_logout_message", player.CharacterName), UnturnedChat.GetColorFromName(Duty.Instance.Configuration.Instance.MessageColor, Color.red));
+                    if (Configuration.Instance.EnableServerAnnouncer) UnturnedChat.Say(Instance.Translate("admin_logout_message", player.CharacterName), UnturnedChat.GetColorFromName(Instance.Configuration.Instance.MessageColor, Color.red));
                 }
+
+                if (Configuration.Instance.EnableServerAnnouncer) UnturnedChat.Say(Instance.Translate("admin_logout_message", player.CharacterName), UnturnedChat.GetColorFromName(Instance.Configuration.Instance.MessageColor, Color.red));
             }
         }
     }

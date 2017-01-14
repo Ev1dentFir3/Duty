@@ -1,11 +1,6 @@
-﻿using Rocket.Unturned.Commands;
-using Rocket.Unturned.Player;
-using Rocket.Unturned;
+﻿using Rocket.Unturned.Player;
 using Rocket.API;
-using SDG;
-using System;
 using System.Collections.Generic;
-using System.Linq;
 
 namespace EFG.Duty
 {
@@ -16,12 +11,11 @@ namespace EFG.Duty
             if (caller == null) return;
             UnturnedPlayer player = (UnturnedPlayer)caller;
             Duty.Instance.duty(player);
-
         }
 
         public string Help
         {
-            get { return "Let your staff do their job!"; }
+            get { return "Gives admin powers to the player without the need of the console."; }
         }
 
         public string Name
@@ -41,9 +35,11 @@ namespace EFG.Duty
 
         public AllowedCaller AllowedCaller
         {
-            get { return Rocket.API.AllowedCaller.Player; }
+            get { return AllowedCaller.Player; }
         }
-        public List<string> Aliases {
+
+        public List<string> Aliases
+        {
             get { return new List<string>() { "d" }; }
         }
 
