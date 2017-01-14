@@ -47,7 +47,7 @@ namespace EFG.Duty
         {
             get
             {
-                return new List<string>() { "duty.duty"};
+                return new List<string>() { "duty.duty" };
             }
         }
     }
