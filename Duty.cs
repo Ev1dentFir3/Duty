@@ -4,7 +4,6 @@ using Rocket.Unturned;
 using Rocket.Core.Plugins;
 using Rocket.API.Collections;
 using UnityEngine;
-using Rocket.Core.Logging;
 using Rocket.API;
 
 namespace EFG.Duty
@@ -17,26 +16,26 @@ namespace EFG.Duty
         {
             Instance = this;
 
-            Logger.LogWarning("Loading event \"Player Connected\"...");
+            Rocket.Core.Logging.Logger.LogWarning("Loading event \"Player Connected\"...");
             U.Events.OnPlayerConnected += PlayerConnected;
-            Logger.LogWarning("Loading event \"Player Disconnected\"...");
+            Rocket.Core.Logging.Logger.LogWarning("Loading event \"Player Disconnected\"...");
             U.Events.OnPlayerDisconnected += PlayerDisconnected;
 
-            Logger.LogWarning("");
-            Logger.LogWarning("Duty has been successfully loaded!");
+            Rocket.Core.Logging.Logger.LogWarning("");
+            Rocket.Core.Logging.Logger.LogWarning("Duty has been successfully loaded!");
         }
         
         protected override void Unload()
         {
             Instance = null;
 
-            Logger.LogWarning("Unloading on player connect event...");
+            Rocket.Core.Logging.Logger.LogWarning("Unloading on player connect event...");
             U.Events.OnPlayerConnected -= PlayerConnected;
-            Logger.LogWarning("Unloading on player disconnect event...");
+            Rocket.Core.Logging.Logger.LogWarning("Unloading on player disconnect event...");
             U.Events.OnPlayerConnected -= PlayerDisconnected;
 
-            Logger.LogWarning("");
-            Logger.LogWarning("Duty has been unloaded!");
+            Rocket.Core.Logging.Logger.LogWarning("");
+            Rocket.Core.Logging.Logger.LogWarning("Duty has been unloaded!");
         }
 
         public void duty(UnturnedPlayer caller)
@@ -62,10 +61,10 @@ namespace EFG.Duty
             {
                 if (cplayer.IsAdmin)
                 {
-                    Logger.LogWarning("Duty Debug: Checking Duty");
+                    Rocket.Core.Logging.Logger.LogWarning("Duty Debug: Checking Duty");
                     if (Configuration.Instance.AllowDutyCheck)
                     {
-                        Logger.LogWarning("Duty Debug: Cplayer Admin Found.");
+                        Rocket.Core.Logging.Logger.LogWarning("Duty Debug: Cplayer Admin Found.");
                         if (caller is ConsolePlayer)
                         {
                             UnturnedChat.Say(Instance.Translate("check_on_duty_message", cplayer, "Console"), UnturnedChat.GetColorFromName(Instance.Configuration.Instance.MessageColor, Color.red));
@@ -77,7 +76,7 @@ namespace EFG.Duty
                     }
                     else if (Configuration.Instance.AllowDutyCheck == false)
                     {
-                        Logger.LogWarning("Duty Debug: Unable To Check Duty. Configuration Is Set To Be Disabled.");
+                        Rocket.Core.Logging.Logger.LogWarning("Duty Debug: Unable To Check Duty. Configuration Is Set To Be Disabled.");
                         if (caller is UnturnedPlayer)
                         {
                             UnturnedChat.Say(caller, "Unable To Check Duty. Configuration Is Set To Be Disabled.");
@@ -88,7 +87,7 @@ namespace EFG.Duty
                 {
                     if (Configuration.Instance.AllowDutyCheck)
                     {
-                        Logger.LogWarning("Duty Debug: Cplayer Admin Not Found");
+                        Rocket.Core.Logging.Logger.LogWarning("Duty Debug: Cplayer Admin Not Found");
                         if (caller is ConsolePlayer)
                         {
                             UnturnedChat.Say(Instance.Translate("check_off_duty_message", cplayer, "Console"), UnturnedChat.GetColorFromName(Instance.Configuration.Instance.MessageColor, Color.red));
@@ -100,7 +99,7 @@ namespace EFG.Duty
                     }
                     else if (Configuration.Instance.AllowDutyCheck == false)
                     {
-                        Logger.LogWarning("Duty Debug: Unable To Check Duty. Configuration Is Set To Be Disabled.");
+                        Rocket.Core.Logging.Logger.LogWarning("Duty Debug: Unable To Check Duty. Configuration Is Set To Be Disabled.");
                         if (caller is UnturnedPlayer)
                         {
                             UnturnedChat.Say(caller, "Unable To Check Duty. Configuration Is Set To Be Disabled.");
@@ -110,7 +109,7 @@ namespace EFG.Duty
             }
             else if (cplayer == null)
             {
-                Logger.LogWarning("Duty Debug: Player is not online or his name is invalid.");
+                Rocket.Core.Logging.Logger.LogWarning("Duty Debug: Player is not online or his name is invalid.");
                 if (caller is UnturnedPlayer)
                 {
                     UnturnedChat.Say(caller, "Player is not online or his name is invalid.");

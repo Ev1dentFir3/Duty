@@ -2,7 +2,6 @@
 using Rocket.API;
 using Rocket.Unturned.Chat;
 using System.Collections.Generic;
-using Rocket.Core.Logging;
 
 namespace EFG.Duty
 {
@@ -14,7 +13,7 @@ namespace EFG.Duty
             {
                 if (caller is ConsolePlayer)
                 {
-                    Logger.LogWarning("No argument was specified. Please use \"dc <playername>\" to check on a player.");
+                    Rocket.Core.Logging.Logger.LogWarning("No argument was specified. Please use \"dc <playername>\" to check on a player.");
                 }
                 else if (caller is UnturnedPlayer)
                 {
