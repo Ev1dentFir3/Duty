@@ -30,7 +30,8 @@ public sealed class DutyPlugin : RocketPlugin<DutyConfiguration>
         { "command_usage", "Wrong command usage, correct usage: /{0} {1}" },
         { "error_player_not_found", "Could not find a player with name {0}" },
         { "check_on_duty_message", "Player {0} is on duty." },
-        { "check_on_duty_group_message", "Player {0} is on {1} [{2}] duty." }
+        { "check_on_duty_group_message", "Player {0} is on {1} [{2}] duty." },
+        { "check_off_duty_message", "Player {0} is not on duty." }
     };
 
     protected override void Load()

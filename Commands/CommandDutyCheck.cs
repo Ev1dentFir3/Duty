@@ -61,7 +61,12 @@ public class CommandDutyCheck : RocketCommandWithTranslations
         foreach (var targetGroup in DutyConfiguration.DutyPermissionGroups
                      .Select(group => R.Permissions.GetGroup(group.GroupId)).Where(targetGroup =>
                          targetGroup?.Members.Contains(player.CSteamID.ToString()) == true))
+        {
             SendMessage(caller, "check_on_duty_group_message", DutyConfiguration.MessageColor, caller.DisplayName,
                 player.DisplayName, targetGroup.DisplayName, targetGroup.Id);
+            return;
+        }
+
+        SendMessage(caller, "check_off_duty_message");
     }
 }
