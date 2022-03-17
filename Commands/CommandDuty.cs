@@ -34,7 +34,6 @@ public class CommandDuty : RocketCommandWithTranslations
         })
     {
         DutyConfiguration = configuration;
-        base.Permissions.AddRange(DutyConfiguration.DutyPermissionGroups.Select(k => k.PermissionRequired));
     }
 
     public override void Execute(IRocketPlayer caller, string[] command)
