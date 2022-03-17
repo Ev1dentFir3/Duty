@@ -53,7 +53,7 @@ public class IndexedTranslations : IReadOnlyDictionary<string, string>
         }
     }
 
-    public string Translate(string translationKey, params object[] args)
+    public string Translate(string translationKey, params object?[] args)
     {
         if (!TryGetValue(translationKey, out var translation))
             return translationKey;
@@ -61,7 +61,7 @@ public class IndexedTranslations : IReadOnlyDictionary<string, string>
         for (var i = 0; i < args.Length; i++)
         {
             var arg = args[i];
-            translation = translation.Replace($"{{{i}}}", arg.ToString());
+            translation = translation.Replace($"{{{i}}}", arg?.ToString() ?? "NULL");
         }
 
         return translation;
